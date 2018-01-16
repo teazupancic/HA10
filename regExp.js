@@ -109,3 +109,72 @@ function getLongestWords(text) {
 //console.log(getLongestWords(undefined));
 //console.log(getLongestWords(""));
 //console.log(getLongestWords(9));
+
+function getWordFrequency(text){
+    if (typeof text === 'string' || text === null || text === undefined ){
+        if (text == '' || text == null || text == undefined){
+            return {};
+        }
+        else {
+            var x = text.match(/\w+(€*)(\w+)*/g);
+            //console.log (x);
+            var obj = {};
+            //make all words in x lower case
+            for (var i = 0 ; i<x.length ; i++){
+                x[i] = x[i].toLowerCase();
+            }
+            //loop trough x, create an object with keys of words and if the key exists in an object increase the number in key:number
+            for (i = 0 ; i<x.length ; i++){
+                var count = 0;
+                for (var j in obj){
+                    if (j == x[i]){
+                        obj[j] ++;
+                        break;
+                    }
+                    //console.log(Object.keys(obj).length);
+                    //console.log(j);
+                    if ((Object.keys(obj).length-1) == count){
+                        var temp = x[i];
+                        obj[temp] = 1;
+                    }
+                    count++;
+                }
+                if (Object.keys(obj).length == 0){
+                    obj [x[i]] = 1;
+                }
+            }
+            return obj;
+        }
+    }
+    else {
+         return (new InputTypeError("The input is not a string."));
+    }
+}
+
+//console.log(getWordFrequency("Hi hi constructor _ 10€ 3.10€"));
+//console.log(getWordFrequency(undefined));
+//console.log(getWordFrequency(null));
+//console.log(getWordFrequency(""));
+//console.log(getWordFrequency(9));
+
+function filterTUBMails(text){
+    if (typeof text === 'string' || text === null || text === undefined ){
+        if (text == '' || text == null || text == undefined){
+            return [];
+        }
+        else {
+            text = text.toLocaleLowerCase();
+            var x = text.match(/\w+([_.-]?\w+)*@mailbox.tu-berlin.de/g );
+            //console.log(x);
+            return x;
+        }
+    }
+    else {
+         return (new InputTypeError("The input is not a string."));
+    }
+}
+//console.log(filterTUBMails("Eine mögliche Adresse ist maxmustermann@mailBOX.tu-berlin.de aber auch admin_s_upe-r.schlau@mailbox.tu-berlin.de"));
+//console.log(filterTUBMails(null));
+//console.log(filterTUBMails(undefined));
+//console.log(filterTUBMails(""));
+//console.log(filterTUBMails(9));
