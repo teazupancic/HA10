@@ -67,8 +67,45 @@ function getWords( text ){
         return (new InputTypeError("The input is not a string."));
     }
 }
-console.log(getWords("Hallo 123 hallo_123 _ € 10€ 10.32€"));
-console.log(getWords(undefined));
-console.log(getWords(''));
-console.log(getWords(null));
-console.log(getWords(9));
+//console.log(getWords("Hallo 123 hallo_123 _ € 10€ 10.32€"));
+//console.log(getWords(undefined));
+//console.log(getWords(''));
+//console.log(getWords(null));
+//console.log(getWords(9));
+
+function getLongestWords(text) {
+    if (typeof text === 'string' || text === null || text === undefined ){
+        if (text == '' || text == null || text == undefined){
+            return [];
+        }
+        else {
+            var x = text.match(/\w+(€*)(\w+)*/g);
+            //console.log(x);
+            var y = x.map(function (t) {return t.length});
+            //console.log(y);
+            //return((x[y.indexOf(Math.max.apply(Math,y))])); //returns only one max
+            var max = -1;
+            var tab = [];
+            for (var w = 0 ; w < y.length ; w++){ //find the longest word
+                if (y[w] > max){
+                    max = y[w];
+                }
+            }
+            for (w = 0 ; w<y.length ; w++){ //loop and add to array all longest words
+                if (y[w] == max){
+                    tab.push (x[w]);
+                }
+            }
+            return tab;
+        }
+    }
+    else {
+         return (new InputTypeError("The input is not a string."));
+    }
+}
+
+//console.log(getLongestWords("Hi 123 _ 10€ 3.33"));
+//console.log(getLongestWords(null));
+//console.log(getLongestWords(undefined));
+//console.log(getLongestWords(""));
+//console.log(getLongestWords(9));
