@@ -5,6 +5,7 @@ werden insgesamt geladen?
 
 8 Ressourcen (blog.html, drei bootstrap dateien, myStyle.css, jgp für logo, addNewArticle.js, jquery).
 
+finish = download
 DOMContentLoaded: 1.41s
 Load: 1.40s
 
@@ -21,9 +22,9 @@ werden? Wie kann diese Begrenzung umgegangen werden?
 
 4 Verbindungen für alle 8 Dateien. (sehe TCP_Verbindungen.jpg).
 
-Wenn das Timeout wirklich kurz ist, könnte es acht sein (wie die Anzahl der Dateien). Eine neue Verbindung für jede Datei.
-Je länger das Timeout ist, desto mehr Dateien können über eine Verbindung gesendet werden.
-
+//Wenn das Timeout wirklich kurz ist, könnte es acht sein (wie die Anzahl der Dateien). Eine neue Verbindung für jede Datei. ne!
+//Je länger das Timeout ist, desto mehr Dateien können über eine Verbindung gesendet werden. ne!
+nur zwei lautet rnc (in modernen browsern firefox 4+, chrome 4+ tudi do 6 povezav).
 
 3.Klicken Sie nacheinander auf Blog.html, myStyle.css und addNewArticle.js und dort auf den Reiter Timing.
 Was bedeuten die einzelnen Einträge? Welche Aktion dauert meistens am längsten?
@@ -34,7 +35,7 @@ Wir sehen, was der Browser zu jeder Zeit gemacht hat -> Sehe Fotos.
 längsten hat Waiting(TTFB) gedauert -> warten auf http response? 
 
 SSL (html conn.id = ...50 css&js conn.id=...66) -> js verwendet dieselbe TCP-Verbindung wie css, daher wurde die SSL bereits eingerichtet. 
-DNS -> css besitzt dns-Abfrage? Wir haben bereits die IP von Browser und Server?
+DNS -> css besitzt dns-Abfrage? Wir haben bereits die IP von Browser und Server? -> dns anfrage rabis samo 1x
 
 
 4.In Kapitel 6 ist zu lesen, dass eine HTTP-Nachricht aus einem Header- und einem BodyAbschnitt besteht.

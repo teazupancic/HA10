@@ -173,7 +173,7 @@ function filterTUBMails(text){
          return (new InputTypeError("The input is not a string."));
     }
 }
-//console.log(filterTUBMails("Eine mögliche Adresse ist maxmustermann@mailBOX.tu-berlin.de aber auch admin_s_upe-r.schlau@mailbox.tu-berlin.de"));
+//console.log(filterTUBMails("Eine mögliche Adresse ist maxmustermann@mailBOX.tu-berlin.de aber auch admin_s_upe-r.schlau_@mailbox.tu-berlin.de"));
 //console.log(filterTUBMails(null));
 //console.log(filterTUBMails(undefined));
 //console.log(filterTUBMails(""));
